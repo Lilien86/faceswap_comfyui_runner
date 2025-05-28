@@ -1,0 +1,697 @@
+{
+  "214": {
+    "inputs": {
+      "samples": [
+        "346",
+        0
+      ],
+      "vae": [
+        "338",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "221": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "345",
+        0
+      ],
+      "negative": [
+        "404",
+        0
+      ],
+      "vae": [
+        "338",
+        0
+      ],
+      "pixels": [
+        "323",
+        0
+      ],
+      "mask": [
+        "463",
+        0
+      ]
+    },
+    "class_type": "InpaintModelConditioning",
+    "_meta": {
+      "title": "InpaintModelConditioning"
+    }
+  },
+  "228": {
+    "inputs": {
+      "width": 778,
+      "height": 512,
+      "x": 0,
+      "y": 0,
+      "image": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "ImageCrop",
+    "_meta": {
+      "title": "Image Crop"
+    }
+  },
+  "240": {
+    "inputs": {
+      "image": "LilienV2.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load New Face"
+    }
+  },
+  "323": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "442",
+        0
+      ],
+      "image2": [
+        "455",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "337": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "340",
+        0
+      ],
+      "clip": [
+        "341",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "Power Lora Loader (rgthree)"
+    }
+  },
+  "338": {
+    "inputs": {
+      "vae_name": "FLUX1/ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "340": {
+    "inputs": {
+      "unet_name": "flux1-fill-dev.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "341": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "343": {
+    "inputs": {
+      "text": "Retain face details:1.1, preserve hair style and texture:1.0, maintain face shape and bone structure:1.0, keep natural facial expression and emotion:1.0\n",
+      "clip": [
+        "341",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "345": {
+    "inputs": {
+      "guidance": 50,
+      "conditioning": [
+        "343",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "346": {
+    "inputs": {
+      "seed": 87,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "337",
+        0
+      ],
+      "positive": [
+        "221",
+        0
+      ],
+      "negative": [
+        "221",
+        1
+      ],
+      "latent_image": [
+        "221",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "404": {
+    "inputs": {
+      "conditioning": [
+        "343",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "413": {
+    "inputs": {
+      "filename_prefix": "AceFaceSwap/Faceswap",
+      "images": [
+        "450",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "422": {
+    "inputs": {
+      "text_x": 10,
+      "text_y": 44,
+      "height": 48,
+      "font_size": 32,
+      "font_color": "white",
+      "label_color": "black",
+      "font": "FreeMono.ttf",
+      "text": "input image (1of10 thumbnail)",
+      "direction": "up",
+      "image": [
+        "431",
+        0
+      ]
+    },
+    "class_type": "AddLabel",
+    "_meta": {
+      "title": "Add Label"
+    }
+  },
+  "423": {
+    "inputs": {
+      "text_x": 10,
+      "text_y": 2,
+      "height": 48,
+      "font_size": 32,
+      "font_color": "white",
+      "label_color": "black",
+      "font": "FreeMono.ttf",
+      "text": "Face Target",
+      "direction": "up",
+      "image": [
+        "430",
+        0
+      ]
+    },
+    "class_type": "AddLabel",
+    "_meta": {
+      "title": "Add Label"
+    }
+  },
+  "427": {
+    "inputs": {
+      "width": 540,
+      "height": 720,
+      "interpolation": "nearest",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 0
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "430": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": 720,
+      "height": 720,
+      "crop": "disabled",
+      "image": [
+        "240",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "431": {
+    "inputs": {
+      "image": "efzz.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "438": {
+    "inputs": {
+      "background": false,
+      "skin": true,
+      "nose": true,
+      "eye_g": true,
+      "r_eye": true,
+      "l_eye": true,
+      "r_brow": true,
+      "l_brow": true,
+      "r_ear": true,
+      "l_ear": true,
+      "mouth": true,
+      "u_lip": true,
+      "l_lip": true,
+      "hair": true,
+      "hat": true,
+      "ear_r": true,
+      "neck_l": false,
+      "neck": false,
+      "cloth": false,
+      "result": [
+        "441",
+        1
+      ]
+    },
+    "class_type": "FaceParsingResultsParser(FaceParsing)",
+    "_meta": {
+      "title": "FaceParsingResultsParser(FaceParsing)"
+    }
+  },
+  "439": {
+    "inputs": {},
+    "class_type": "FaceParsingProcessorLoader(FaceParsing)",
+    "_meta": {
+      "title": "FaceParsingProcessorLoader(FaceParsing)"
+    }
+  },
+  "440": {
+    "inputs": {
+      "device": "cuda"
+    },
+    "class_type": "FaceParsingModelLoader(FaceParsing)",
+    "_meta": {
+      "title": "FaceParsingModelLoader(FaceParsing)"
+    }
+  },
+  "441": {
+    "inputs": {
+      "model": [
+        "440",
+        0
+      ],
+      "processor": [
+        "439",
+        0
+      ],
+      "image": [
+        "442",
+        0
+      ]
+    },
+    "class_type": "FaceParse(FaceParsing)",
+    "_meta": {
+      "title": "FaceParse(FaceParsing)"
+    }
+  },
+  "442": {
+    "inputs": {
+      "bbox": [
+        "443",
+        0
+      ],
+      "image": [
+        "431",
+        0
+      ]
+    },
+    "class_type": "ImageCropWithBBox(FaceParsing)",
+    "_meta": {
+      "title": "ImageCropWithBBox(FaceParsing)"
+    }
+  },
+  "443": {
+    "inputs": {
+      "index": 0,
+      "bbox_list": [
+        "444",
+        0
+      ]
+    },
+    "class_type": "BBoxListItemSelect(FaceParsing)",
+    "_meta": {
+      "title": "BBoxListItemSelect(FaceParsing)"
+    }
+  },
+  "444": {
+    "inputs": {
+      "threshold": 0.30000000000000004,
+      "dilation": 250,
+      "dilation_ratio": 0.20000000000000004,
+      "by_ratio": false,
+      "bbox_detector": [
+        "445",
+        0
+      ],
+      "image": [
+        "431",
+        0
+      ]
+    },
+    "class_type": "BBoxDetect(FaceParsing)",
+    "_meta": {
+      "title": "BBoxDetect(FaceParsing)"
+    }
+  },
+  "445": {
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "class_type": "BBoxDetectorLoader(FaceParsing)",
+    "_meta": {
+      "title": "BBoxDetectorLoader(FaceParsing)"
+    }
+  },
+  "446": {
+    "inputs": {
+      "expand": 50,
+      "incremental_expandrate": 0,
+      "tapered_corners": true,
+      "flip_input": false,
+      "blur_radius": 15,
+      "lerp_alpha": 1,
+      "decay_factor": 1,
+      "fill_holes": false,
+      "mask": [
+        "438",
+        0
+      ]
+    },
+    "class_type": "GrowMaskWithBlur",
+    "_meta": {
+      "title": "Grow Mask With Blur"
+    }
+  },
+  "450": {
+    "inputs": {
+      "bbox": [
+        "443",
+        0
+      ],
+      "image_src": [
+        "431",
+        0
+      ],
+      "image": [
+        "473",
+        0
+      ]
+    },
+    "class_type": "ImageInsertWithBBox(FaceParsing)",
+    "_meta": {
+      "title": "ImageInsertWithBBox(FaceParsing)"
+    }
+  },
+  "452": {
+    "inputs": {
+      "threshold": 0.30000000000000004,
+      "dilation": 200,
+      "dilation_ratio": 0.20000000000000004,
+      "by_ratio": false,
+      "bbox_detector": [
+        "453",
+        0
+      ],
+      "image": [
+        "240",
+        0
+      ]
+    },
+    "class_type": "BBoxDetect(FaceParsing)",
+    "_meta": {
+      "title": "BBoxDetect(FaceParsing)"
+    }
+  },
+  "453": {
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "class_type": "BBoxDetectorLoader(FaceParsing)",
+    "_meta": {
+      "title": "BBoxDetectorLoader(FaceParsing)"
+    }
+  },
+  "454": {
+    "inputs": {
+      "index": 0,
+      "bbox_list": [
+        "452",
+        0
+      ]
+    },
+    "class_type": "BBoxListItemSelect(FaceParsing)",
+    "_meta": {
+      "title": "BBoxListItemSelect(FaceParsing)"
+    }
+  },
+  "455": {
+    "inputs": {
+      "bbox": [
+        "454",
+        0
+      ],
+      "image": [
+        "240",
+        0
+      ]
+    },
+    "class_type": "ImageCropWithBBox(FaceParsing)",
+    "_meta": {
+      "title": "ImageCropWithBBox(FaceParsing)"
+    }
+  },
+  "458": {
+    "inputs": {
+      "image": [
+        "455",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "459": {
+    "inputs": {
+      "width": [
+        "458",
+        0
+      ],
+      "height": [
+        "458",
+        1
+      ],
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "EmptyImage"
+    }
+  },
+  "460": {
+    "inputs": {
+      "mask": [
+        "446",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "461": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "460",
+        0
+      ],
+      "image2": [
+        "459",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "463": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "461",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "467": {
+    "inputs": {
+      "image": [
+        "442",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "468": {
+    "inputs": {
+      "width": [
+        "475",
+        0
+      ],
+      "height": [
+        "467",
+        1
+      ],
+      "position": "top-left",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "470": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "471": {
+    "inputs": {
+      "upscale_model": [
+        "470",
+        0
+      ],
+      "image": [
+        "468",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "473": {
+    "inputs": {
+      "width": [
+        "467",
+        0
+      ],
+      "height": [
+        "467",
+        1
+      ],
+      "interpolation": "nearest",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "471",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "475": {
+    "inputs": {
+      "op": "Sub",
+      "a": [
+        "467",
+        0
+      ],
+      "b": 5
+    },
+    "class_type": "CM_IntBinaryOperation",
+    "_meta": {
+      "title": "IntBinaryOperation"
+    }
+  }
+}
