@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: "minozar/1of10-comfyui-pipelines:latest"
+    image: "minozar/1of10-comfyui-pipelines:slim"
     ports:
       - "8188:8188"
     volumes:
