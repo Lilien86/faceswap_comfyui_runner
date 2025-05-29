@@ -1,0 +1,1 @@
+docker run -it --rm -v "D:\FREELANCE\1of10\faceswap_comfyui_runner\runpod-volume\models:/ComfyUI/models" -p 8188:8188 minozar/1of10-comfyui-pipelines:slim

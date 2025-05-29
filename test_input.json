@@ -1,0 +1,6 @@
+{
+    "input": {
+        "image1_path": "images/input.jpg",
+        "image2_path": "images/target.jpg"
+    }
+}

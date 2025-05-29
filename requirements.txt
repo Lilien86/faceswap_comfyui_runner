@@ -1,0 +1,9 @@
+xformers==0.0.29.post3
+torch==2.6.0
+torchvision
+torchaudio
+piexif
+segment_anything
+websockets
+websocket-client
+runpod~=1.7.9
