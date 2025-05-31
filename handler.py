@@ -27,15 +27,11 @@ logging.basicConfig(
 logger = logging.getLogger("comfyui-faceswap")
 
 # Config
-WORKFLOW_PATH = os.environ.get("WORKFLOW_PATH", "workflow_faceswap.json")
+WORKFLOW_PATH = os.environ.get("WORKFLOW_PATH", "good.json")
 COMFYUI_HOST = os.environ.get("COMFYUI_HOST", "127.0.0.1:8188")
 NETWORK_STORAGE_PATH = os.environ.get("NETWORK_STORAGE_PATH", "/runpod-volume")
 COMFYUI_TIMEOUT = int(os.environ.get("COMFYUI_TIMEOUT", "120"))  # Augmenté à 120 secondes
 COMFYUI_PATH = os.environ.get("COMFYUI_PATH", "/ComfyUI")  # Chemin vers l'installation de ComfyUI
-
-# Mode test : si True, simule un démarrage réussi de ComfyUI sans réellement le lancer
-# Utile pour tester le handler sur une machine sans GPU NVIDIA
-TEST_MODE = os.environ.get("TEST_MODE", "false").lower() == "true"
 
 # Global variables
 comfyui_process = None
@@ -44,13 +40,6 @@ def start_comfyui() -> bool:
     """Start ComfyUI if not already running"""
     global comfyui_process
     try:
-        # Si mode test activé, simuler un démarrage réussi
-        if TEST_MODE:
-            print("\n⚠️ TEST_MODE actif: ComfyUI ne sera pas démarré (simulé)", file=sys.stderr)
-            print("⚠️ Les images ne seront pas traitées, mais le flux du handler sera testé", file=sys.stderr)
-            sys.stderr.flush()
-            return True
-            
         if comfyui_process is None:
             # Vérifier que le chemin vers ComfyUI existe
             comfyui_main_path = os.path.join(COMFYUI_PATH, "main.py")

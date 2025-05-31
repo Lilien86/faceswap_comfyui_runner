@@ -12,7 +12,7 @@ RUN git clone --depth=1 https://github.com/comfyanonymous/ComfyUI.git /ComfyUI \
 RUN pip install --no-cache-dir -r /ComfyUI/requirements.txt && pip cache purge
 
 ADD workflow_faceswap.json /workflow_faceswap.json
-ADD testWF.json /testWF.json
+ADD good.json /good.json
 
 ADD handler.py .
 ADD test_input.json .
